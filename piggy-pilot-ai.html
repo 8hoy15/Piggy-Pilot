@@ -6,12 +6,9 @@
   <title>Piggy Pilot</title>
   <link rel="stylesheet" href="piggy-style.css">
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <a href="main.html"><div class="banner"><h1><center>Welcome to Piggy Pilot!</center></h1></div></a>
 </head>
 <body>
-  <!-- Banner at top -->
-  <div class="banner">
-    <h1>Piggy Pilot Ai</h1>
-  </div>
 
   <!-- Chatbox below -->
   <div class="banner1">
@@ -71,4 +68,13 @@
       messagesDiv.innerHTML += `<div class="msg-ai"><b>PiggyPilot:</b> Error contacting API</div>`;
     }
   }
+  const input = document.getElementById("userInput");
+
+// Listen for Enter key
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault(); // prevent form submission if inside a form
+    askGemini();
+  }
+});
 </script>

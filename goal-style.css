@@ -81,3 +81,17 @@ canvas {
   justify-content: center;
   align-items: center; /* centers vertically if container has height */
 }
+
+a:link {
+		color: #ff98c8; /*unvisted link*/
+    text-decoration: none;
+	}
+
+	a:visited {
+		color: #ff98c8; /* Visited link */
+    text-decoration: none;
+		}
+
+	a:hover {
+		color: #ff98c8; /* When mouse hovers over */
+		}

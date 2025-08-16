@@ -31,18 +31,23 @@ html, body {
 	  margin: 10px;
     }
 
-.table-box {
-            background-color: #00000082; /* Light gray box */
-            border-radius: 20px;       /* Rounded corners */
-            padding: 20px;             /* Space inside the box */
-            width: fit-content;        /* Box fits table size */
-            cursor: pointer;
-            margin: auto;       /* Center it horizontally */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Optional shadow */
-        }
-
 .table-container {
   display: flex;
+  justify-content: space-between; /* Distribute extra space evenly */
+  flex-wrap: wrap; /* Optional: allows wrapping on smaller screens */
+  gap: 20px; /* Optional: spacing between boxes */
+}
+
+.table-box {
+  background-color: #00000082;
+  border-radius: 20px;
+  padding: 20px;
+  cursor: pointer;
+  text-align: center; /* Keep text centered */
+  flex: 1; /* Make all boxes grow equally */
+  min-width: 120px; /* Optional: prevent boxes from being too small */
+  max-width: 200px; /* Optional: limit box size */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 a:link {
