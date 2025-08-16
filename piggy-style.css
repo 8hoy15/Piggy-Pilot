@@ -1,0 +1,84 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: pink;
+  background-image: url('piggy.png');
+  background-repeat: repeat;
+  background-size: cover;
+}
+
+.banner {
+      background-color: #00000082; /* Change color */
+      color: rgb(0, 0, 0);
+      text-align: center;
+      color: #ff98c8;
+      padding: 5px;
+      font-size: 24px;
+      font-weight: bold;
+	  border-radius: 10px;
+	  margin: 10px;
+    }
+
+.banner1 {
+      background-color: #00000082; /* Change color */
+      color: rgb(0, 0, 0);
+      text-align: center;
+      color: #065c27;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+	  border-radius: 10px;
+	  margin: 10px;
+    }
+
+#chatbox {
+      width: 90%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 15px;
+      border: 2px solid white;
+      border-radius: 12px;
+      background: #00000082;
+      text-align: left;
+    }
+
+    #messages {
+      min-height: 150px;
+      max-height: 300px;
+      overflow-y: auto;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid white;
+      border-radius: 8px;
+      background: #00000082;
+      font-size: 14px;
+    }
+
+    .msg-user {
+      color: #ff98c8;
+      margin: 5px 0;
+    }
+
+    .msg-ai {
+      color: lightgray;
+      margin: 5px 0;
+    }
+
+    #userInput {
+      width: 70%;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid white;
+      background: #ff98c8;
+      color: black;
+    }
+
+    button {
+      padding: 8px 12px;
+      margin-left: 5px;
+      border: none;
+      border-radius: 8px;
+      background: #ff98c8;
+      cursor: pointer;
+      color: black;
+    }
