@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Piggy Pilot</title>
   <link rel="stylesheet" href="piggy-style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
   <!-- Banner at top -->
@@ -25,34 +26,49 @@
 </body>
 </html>
 
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
-    async function askGemini() {
-      const input = document.getElementById("userInput");
-      const messagesDiv = document.getElementById("messages");
-      const userMessage = input.value.trim();
-      if (!userMessage) return;
+  const messagesDiv = document.getElementById("messages");
 
-      // show user message
-      messagesDiv.innerHTML += `<div class="msg-user"><b>You:</b> ${userMessage}</div>`;
-      input.value = "";
+  // Initial AI greeting
+  window.addEventListener("DOMContentLoaded", () => {
+    messagesDiv.innerHTML += `<div class="msg-ai"><b>PiggyPilot:</b> Hey! I'm here to assist you with your finances. Ask me anything about budgeting, saving, or money management.</div>`;
+  });
 
-      try {
-        const res = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyDsZxN5e9oov49QxYLxFR2KbsebJIci3UE", {
+  async function askGemini() {
+    const input = document.getElementById("userInput");
+    const userMessage = input.value.trim();
+    if (!userMessage) return;
+
+    // Show user message
+    messagesDiv.innerHTML += `<div class="msg-user"><b>You:</b> ${userMessage}</div>`;
+    input.value = "";
+
+    try {
+      // Prefix the user message with finance-only instructions
+      const prompt = `You are PiggyPilot, an AI that ONLY gives advice about personal finance, budgeting, or money management. Answer concisely. Question: ${userMessage}`;
+
+      const res = await fetch(
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyDsZxN5e9oov49QxYLxFR2KbsebJIci3UE",
+        {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            contents: [{ parts: [{ text: userMessage }] }]
+            contents: [{ parts: [{ text: prompt }] }]
           })
-        });
+        }
+      );
 
-        const data = await res.json();
-        const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "No response";
+      const data = await res.json();
+      const aiRaw = data.candidates?.[0]?.content?.parts?.[0]?.text || "No response";
 
-        // show ai message
-        messagesDiv.innerHTML += `<div class="msg-ai"><b>PiggyPilot:</b> ${aiResponse}</div>`;
-        messagesDiv.scrollTop = messagesDiv.scrollHeight;
-      } catch (err) {
-        messagesDiv.innerHTML += `<div class="msg-ai"><b>PiggyPilot:</b> Error contacting API</div>`;
-      }
+      // Render AI response as Markdown
+      const aiResponseHTML = marked.parse(aiRaw);
+
+      messagesDiv.innerHTML += `<div class="msg-ai"><b>PiggyPilot:</b> ${aiResponseHTML}</div>`;
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    } catch (err) {
+      messagesDiv.innerHTML += `<div class="msg-ai"><b>PiggyPilot:</b> Error contacting API</div>`;
     }
-  </script>
+  }
+</script>
