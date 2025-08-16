@@ -1,0 +1,83 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: pink;
+  background-image: url('piggy.png');
+  background-repeat: repeat;
+  background-size: cover;
+}
+
+.banner {
+      background-color: #00000082; /* Change color */
+      color: rgb(0, 0, 0);
+      text-align: center;
+      color: #ff98c8;
+      padding: 5px;
+      font-size: 24px;
+      font-weight: bold;
+	  border-radius: 10px;
+	  margin: 10px;
+    }
+
+.banner1 {
+      background-color: #00000082; /* Change color */
+      color: rgb(0, 0, 0);
+      text-align: center;
+      color: #065c27;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+	  border-radius: 10px;
+	  margin: 10px;
+    }
+
+.banner2 {
+      background-color: #e0e0e0; /* Change color */
+      color: rgb(0, 0, 0);
+      text-align: center;
+      color: #065c27;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+	  border-radius: 10px;
+	  margin: auto;
+      max-width: 700px;
+    }
+
+h1 {
+  margin-bottom: 40px;
+}
+
+.input-container {
+  margin-bottom: 30px;
+}
+
+input {
+  width: 80px;
+  padding: 5px;
+  font-size: 16px;
+  margin: 0 10px;
+}
+
+button {
+  padding: 5px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #e0e0e0;
+  background-color: #065c27;
+  border: none;
+  border-radius: 5px;
+}
+
+canvas {
+  margin-top: 20px;
+}
+
+.chart-container {
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;      /* centers horizontally */
+  display: flex;       /* optional: for better alignment */
+  justify-content: center;
+  align-items: center; /* centers vertically if container has height */
+}

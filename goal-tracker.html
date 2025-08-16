@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piggy Pilot</title>
+    <link rel="stylesheet" href="goal-style.css">
+    <div class="banner"><h1><center>Budget Tracker</center></h1></div>
+</head>
+<body>
+    <div class="banner1">
+        <div class="savings-chart">
+        <div class="banner2">
+  <label>Current Savings: $<input type="number" id="current" value="50"></label>
+  <label>Goal Amount: $<input type="number" id="goal" value="200"></label>
+  <button id="updateBtn">Update</button>
+  </div>
+  <div class="chart-container">
+  <canvas id="progressChart"></canvas>
+</div>
+
+</div>
+    </div>
+</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('progressChart').getContext('2d');
+  let current = parseFloat(document.getElementById('current').value);
+  let goal = parseFloat(document.getElementById('goal').value);
+
+  // Function to generate chart data safely
+  function getData() {
+    const remaining = Math.max(goal - current, 0);  // never negative
+    const saved = Math.min(current, goal);          // cap saved at goal
+    return [remaining, saved];
+  }
+
+  const data = {
+    labels: ['Remaining', 'Saved'],
+    datasets: [{
+      data: getData(),
+      backgroundColor: ['#e0e0e0', '#065c27'],
+      borderWidth: 0
+    }]
+  };
+
+  // Plugin for center text
+const centerText = {
+  id: 'centerText',
+  beforeDraw(chart) {
+    const { ctx, width, height } = chart;
+    ctx.restore();
+
+    // Draw black circle
+    const radius = 50; // radius of the circle
+    ctx.beginPath();
+    ctx.arc(width / 2, height / 2, radius, 0, 2 * Math.PI);
+    ctx.fillStyle = '#e0e0e0';
+    ctx.fill();
+    
+    // Draw the text on top
+    ctx.font = '16px Arial';
+    ctx.fillStyle = '#065c27';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(`$${current} / $${goal}`, width / 2, height / 2);
+
+    ctx.save();
+  }
+};
+
+  const config = {
+    type: 'doughnut',
+    data: data,
+    options: {
+      cutout: '70%',
+      rotation: -Math.PI / 2, // start at top
+      plugins: { legend: { display: false } }
+    },
+    plugins: [centerText]
+  };
+
+  const chart = new Chart(ctx, config);
+
+  // Update chart when button is clicked
+  document.getElementById('updateBtn').addEventListener('click', () => {
+    current = parseFloat(document.getElementById('current').value);
+    goal = parseFloat(document.getElementById('goal').value);
+    chart.data.datasets[0].data = getData();
+    chart.update();
+  });
+</script>
