@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piggy Pilot</title>
+    <link rel="stylesheet" href="challenges-style.css">
+    <link rel="icon" type="image/png" href="piggy-icon.png">
+    <a href="main.html"><div class="banner"><h1><center>Challenges</center></h1></div></a>
+</head>
+<body>
+    <div class="banner1">
+    <div class="banner2">
+    <div id="challenge-section">
+  <h2>Finance Challenges</h2>
+
+  <!-- Add a new challenge -->
+  <input type="text" id="challenge-name" placeholder="Challenge name">
+  <input type="number" id="challenge-amount" placeholder="Amount (optional)">
+  <br><br>
+  <button onclick="addChallenge()">Add Challenge</button>
+
+  <div id="active-container" style="display:none;">
+  <h3>Active Challenges</h3>
+  <ul id="active-challenges"></ul>
+</div>
+
+<!-- Completed challenges -->
+<div id="completed-container" style="display:none;">
+  <h3>Completed Challenges</h3>
+  <ul id="completed-challenges"></ul>
+</div>
+  
+</div>
+</div>
+</div>
+</body>
+</html>
+
+<script>
+let challenges = [];
+
+// Add a new challenge
+function addChallenge() {
+  const name = document.getElementById('challenge-name').value.trim();
+  const amount = document.getElementById('challenge-amount').value;
+  if (!name) return alert("Enter a challenge name.");
+
+  const challenge = { name, amount: amount || null, completed: false };
+  challenges.push(challenge);
+
+  // clear inputs
+  document.getElementById('challenge-name').value = '';
+  document.getElementById('challenge-amount').value = '';
+
+  renderChallenges();
+}
+
+// Mark challenge as complete
+function markComplete(index) {
+  challenges[index].completed = true;
+  renderChallenges();
+}
+
+// Render all challenges
+function renderChallenges() {
+  const activeList = document.getElementById('active-challenges');
+  const completedList = document.getElementById('completed-challenges');
+  const activeContainer = document.getElementById('active-container');
+  const completedContainer = document.getElementById('completed-container');
+
+  activeList.innerHTML = '';
+  completedList.innerHTML = '';
+
+  let hasActive = false;
+  let hasCompleted = false;
+
+  challenges.forEach((c, i) => {
+    const li = document.createElement('li');
+    li.textContent = c.amount ? `${c.name} - $${c.amount}` : c.name;
+
+    if (c.completed) {
+      completedList.appendChild(li);
+      hasCompleted = true;
+    } else {
+      const completeBtn = document.createElement('button');
+      completeBtn.textContent = 'Mark Complete';
+      completeBtn.onclick = () => markComplete(i);
+      li.appendChild(completeBtn);
+      activeList.appendChild(li);
+      hasActive = true;
+    }
+  });
+
+  // Show/hide sections depending on content
+  activeContainer.style.display = hasActive ? 'block' : 'none';
+  completedContainer.style.display = hasCompleted ? 'block' : 'none';
+}
+</script>

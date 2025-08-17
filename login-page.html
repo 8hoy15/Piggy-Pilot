@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="login-style.css">
+  <a href="main.html"><div class="banner"><h1><center>Login / Sign-Up</center></h1></div></a>
+  <style>
+    input { width: 100%; margin: 5px 0; padding: 5px; }
+    button { margin: 5px 0; padding: 8px; width: 100%; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <div class="banner2" style="max-width:400px; margin:auto; padding:20px;">
+    <input id="email" type="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+    <button onclick="signup()">Sign Up</button>
+    <button onclick="login()">Login</button>
+    <button onclick="googleLogin()">Login with Google</button>
+    <button onclick="logout()">Logout</button>
+    <p id="user-info" style="margin-top:10px;">Not logged in</p>
+  </div>
+
+  <!-- Firebase SDKs (compat version for static sites) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    // Your Firebase config — REPLACE with your actual values
+    const firebaseConfig = {
+    apiKey: "AIzaSyB4DkO1Y6Fwme9agaQvvhl781x23t7-5aQ",
+    authDomain: "piggy-pilot-2a971.firebaseapp.com",
+    projectId: "piggy-pilot-2a971",
+    storageBucket: "piggy-pilot-2a971.firebasestorage.app",
+    messagingSenderId: "960124214653",
+    appId: "1:960124214653:web:e26fde33732311b6d74014"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore(); // optional for saving challenges later
+
+    // --- SIGN UP ---
+    function signup() {
+      const email = document.getElementById("email").value;
+      const pass = document.getElementById("password").value;
+      auth.createUserWithEmailAndPassword(email, pass)
+        .then(userCredential => alert("Account created!"))
+        .catch(err => alert(err.message));
+    }
+
+    // --- LOGIN ---
+    function login() {
+      const email = document.getElementById("email").value;
+      const pass = document.getElementById("password").value;
+      auth.signInWithEmailAndPassword(email, pass)
+        .then(userCredential => alert("Logged in!"))
+        .catch(err => alert(err.message));
+    }
+
+    // --- LOGIN WITH GOOGLE ---
+    function googleLogin() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider)
+        .then(result => alert("Logged in with Google!"))
+        .catch(err => alert(err.message));
+    }
+
+    // --- LOGOUT ---
+    function logout() {
+      auth.signOut().then(() => alert("Logged out!"));
+    }
+
+    // --- AUTH STATE ---
+    auth.onAuthStateChanged(user => {
+      const info = document.getElementById("user-info");
+      if(user) {
+        info.innerText = `Hello, ${user.email || user.displayName}`;
+      } else {
+        info.innerText = "Not logged in";
+      }
+    });
+  </script>
+</body>
+</html>
