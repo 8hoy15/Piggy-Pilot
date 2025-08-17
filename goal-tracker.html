@@ -92,4 +92,14 @@ const centerText = {
     chart.data.datasets[0].data = getData();
     chart.update();
   });
+
+  document.querySelectorAll("#current, #goal").forEach(input => {
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault(); // prevent accidental form submission
+      document.getElementById("updateBtn").click(); // trigger update button
+    }
+  });
+});
+
 </script>

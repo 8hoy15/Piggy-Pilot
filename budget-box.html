@@ -4,7 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piggy Pilot</title>
-    <link rel="stylesheet" href="main-style.css">
+    <link rel="stylesheet" href="budget-style.css">
     <link rel="icon" type="image/png" href="piggy-icon.png">
     <a href="main.html"><div class="banner"><h1><center>Budget Boxes</center></h1></div></a>
 </head>
+<body>
+    <div class="banner1">
+    <div class="banner2">
+    <label>Monthly Income: $<input type="number" id="income" value="0"></label>
+    <div id="categories"></div>
+    <button id="addCategoryBtn">Add Category</button>
+    <button id="calculateBtn">Calculate</button>
+    <div id="results"></div>
+    </div>
+  </div>
+</body>
+</html>
+
+<script>
+      const categoriesDiv = document.getElementById('categories');
+    const resultsDiv = document.getElementById('results');
+    const addCategoryBtn = document.getElementById('addCategoryBtn');
+    const calculateBtn = document.getElementById('calculateBtn');
+
+    function addCategory(name = '', percent) {
+      const div = document.createElement('div');
+      div.innerHTML = `
+        <input type="text" placeholder="Category" value="${name}">
+        <input type="number" placeholder="%" value="${percent}" min="0" max="100">
+        <button class="removeBtn">X</button>
+      `;
+      div.querySelector('.removeBtn').addEventListener('click', () => div.remove());
+      categoriesDiv.appendChild(div);
+    }
+
+    addCategoryBtn.addEventListener('click', () => addCategory());
+
+    calculateBtn.addEventListener('click', () => {
+      const income = parseFloat(document.getElementById('income').value) || 0;
+      const categories = categoriesDiv.querySelectorAll('div');
+      let totalPercent = 0;
+      let resultsHTML = "<h3>Results:</h3><ul>";
+      categories.forEach(cat => {
+        const name = cat.querySelector('input[type=text]').value || "Unnamed";
+        const percent = parseFloat(cat.querySelector('input[type=number]').value) || 0;
+        totalPercent += percent;
+        const amount = (income * percent / 100).toFixed(2);
+        resultsHTML += `<li>${name}: $${amount} (${percent}%)</li>`;
+      });
+      resultsHTML += "</ul>";
+      if (totalPercent !== 100) {
+        resultsHTML += `<p style="color:red;">Warning: Total percentage = ${totalPercent}%. It should equal 100%.</p>`;
+      }
+      resultsDiv.innerHTML = resultsHTML;
+    });
+  </script>

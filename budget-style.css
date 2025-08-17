@@ -1,0 +1,59 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: pink;
+  background-image: url('piggy.png');
+  background-repeat: repeat;
+  background-size: cover;
+}
+
+.banner {
+      background-color: #00000082; /* Change color */
+      color: rgb(0, 0, 0);
+      text-align: center;
+      color: #ff98c8;
+      padding: 5px;
+      font-size: 24px;
+      font-weight: bold;
+	  border-radius: 10px;
+	  margin: 10px;
+    }
+
+.banner1 {
+      background-color: #00000082; /* Change color */
+      color: rgb(0, 0, 0);
+      text-align: center;
+      color: #ff98c8;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+	  border-radius: 10px;
+	  margin: 10px;
+    }
+
+.banner2 {
+      background-color: #00000082; /* Change color */
+      color: rgb(0, 0, 0);
+      text-align: center;
+      color: #ff98c8;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+	  border-radius: 10px;
+	  margin: auto;
+      max-width: 700px;
+    }
+
+a:link {
+		color: #ff98c8; /*unvisted link*/
+    text-decoration: none;
+	}
+
+	a:visited {
+		color: #ff98c8; /* Visited link */
+    text-decoration: none;
+		}
+
+	a:hover {
+		color: #ff98c8; /* When mouse hovers over */
+		}
