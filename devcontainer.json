@@ -1,0 +1,28 @@
+{
+  "name": "Codespaces-like Dev Container",
+
+  // Base on the universal image that underlies default configurations
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+
+  // Add the SSH server so codespace access and terminal features work as expected
+  "features": {
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
+    }
+  },
+
+  // Customize VS Code behavior or auto-install extensions if desired
+  // "customizations": {
+  //   "vscode": {
+  //     "extensions": [
+  //       ... your preferred list ...
+  //     ]
+  //   }
+  // },
+
+  // Optional: run initial setup commands once the container starts
+  // "postCreateCommand": "echo 'Container setup complete!'",
+
+  // Use the default vscode user
+  "remoteUser": "vscode"
+}
