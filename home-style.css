@@ -16,24 +16,21 @@ html, body {
       font-size: 24px;
       font-weight: bold;
 	    margin: 0px;
-      margin-bottom: 10px;
     }
 
 .menu-btn {
-  position: fixed;
-  top: 35px;
-  left: 15px;
-  z-index: 1001;
-  background: #333;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  font-size: 18px;
-  cursor: pointer;
-  border-radius: 10px;
-  display: inline-block; /* prevents stretching */
-  width: auto; /* override if something forces 100% */
-}
+      position: fixed;
+      top: 35px;
+      left: 15px;
+      z-index: 1001;
+      background: #333;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
 
     /* Sidebar menu */
     .side-menu {
@@ -84,6 +81,7 @@ html, body {
       height: 35px;
       border-radius: 50%;
     }
+  
 
 .banner1 {
       background-color: #00000082; /* Change color */
@@ -97,27 +95,23 @@ html, body {
 	  margin: 10px;
     }
 
-.banner2 {
-      background-color: #e0e0e0; /* Change color */
-      color: rgb(0, 0, 0);
-      text-align: center;
-      color: #065c27;
-      padding: 20px;
-      font-size: 24px;
-      font-weight: bold;
-	  border-radius: 10px;
-	  margin: auto;
-      max-width: 450px;
-    }
+.table-container {
+  display: flex;
+  justify-content: space-between; /* Distribute extra space evenly */
+  flex-wrap: wrap; /* Optional: allows wrapping on smaller screens */
+  gap: 20px; /* Optional: spacing between boxes */
+}
 
-button {
-  padding: 5px 15px;
-  font-size: 16px;
+.table-box {
+  background-color: #00000082;
+  border-radius: 20px;
+  padding: 20px;
   cursor: pointer;
-  color: #e0e0e0;
-  background-color: #065c27;
-  border: none;
-  border-radius: 5px;
+  text-align: center; /* Keep text centered */
+  flex: 1; /* Make all boxes grow equally */
+  min-width: 120px; /* Optional: prevent boxes from being too small */
+  max-width: 200px; /* Optional: limit box size */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 a:link {
@@ -133,3 +127,22 @@ a:link {
 	a:hover {
 		color: #ff98c8; /* When mouse hovers over */
 		}
+
+    /* Login button */
+    .login-btn {
+      background: #333;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
+      text-decoration: none;
+      position: fixed;
+      top: 35px;
+      left: 1840px;
+    }
+
+    .login-btn:hover {
+      background: #333;
+    }

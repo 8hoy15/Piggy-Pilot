@@ -8,15 +8,78 @@ html, body {
 }
 
 .banner {
-      background-color: #00000082; /* Change color */
+      background-color: #000000d2; /* Change color */
       color: rgb(0, 0, 0);
       text-align: center;
       color: #ff98c8;
-      padding: 5px;
+      padding: 1px;
       font-size: 24px;
       font-weight: bold;
-	  border-radius: 10px;
-	  margin: 10px;
+	    margin: 0px;
+    }
+
+.menu-btn {
+      position: fixed;
+      top: 35px;
+      left: 15px;
+      z-index: 1001;
+      background: #333;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+
+    /* Sidebar menu */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -250px; /* hidden off screen */
+      width: 250px;
+      height: 100%;
+      background: #222;
+      color: white;
+      padding-top: 85px;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+
+    .side-menu a {
+      display: block;
+      padding: 15px 20px;
+      color: white;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .side-menu a:hover {
+      background: #444;
+    }
+
+    /* Show menu when active */
+    .side-menu.active {
+      left: 0;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* User icon */
+    .user-icon {
+      cursor: pointer;
+      position: absolute;
+      top: 35px;
+      right: 15px;
+    }
+
+    .user-icon img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
     }
 
 .banner1 {

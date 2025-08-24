@@ -4,14 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="login-style.css">
-  <a href="main.html"><div class="banner"><h1><center>Login / Sign-Up</center></h1></div></a>
+  <a href="home.html"><div class="banner"><h1><center>Login / Sign-Up</center></h1></div></a>
   <style>
     input { width: 100%; margin: 5px 0; padding: 5px; }
     button { margin: 5px 0; padding: 8px; width: 100%; cursor: pointer; }
   </style>
 </head>
 <body>
+  <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
 
+  <!-- Side menu -->
+  <div class="side-menu" id="sideMenu">
+    <a href="home.html">Home</a>
+    <a href="budget-box.html">Budget Boxes</a>
+    <a href="challenges.html">Challenges</a>
+    <a href="goal-tracker.html">Goal Tracker</a>
+    <a href="piggy-pilot-ai.html">Piggy Pilot AI</a>
+  </div>
+  <div class="navbar">
+    <div class="user-icon" onclick="window.location.href='login-page.html'">
+      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="User Account">
+    </div>
+  </div>
   <div class="banner2" style="max-width:400px; margin:auto; padding:20px;">
     <input id="email" type="email" placeholder="Email">
     <input id="password" type="password" placeholder="Password">
@@ -83,6 +97,9 @@
         info.innerText = "Not logged in";
       }
     });
+    function toggleMenu() {
+      document.getElementById("sideMenu").classList.toggle("active");
+    }
   </script>
 </body>
 </html>

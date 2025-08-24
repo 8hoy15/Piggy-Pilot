@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piggy Pilot</title>
+    <link rel="stylesheet" href="home-style.css">
+    <link rel="icon" type="image/png" href="piggy-icon.png">
+    <a href="home.html"><div class="banner"><h1><center>Welcome to Piggy Pilot!</center></h1></div></a>
+<body>
+    <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+    <a href="login-page.html" class="login-btn">Login</a>
+
+  <!-- Side menu -->
+  <div class="side-menu" id="sideMenu">
+    <a href="home.html">Home</a>
+    <a href="budget-box.html">Budget Boxes</a>
+    <a href="challenges.html">Challenges</a>
+    <a href="goal-tracker.html">Goal Tracker</a>
+    <a href="piggy-pilot-ai.html">Piggy Pilot AI</a>
+  </div>
+  <div class="navbar">
+    <div class="user-icon" onclick="window.location.href='login-page.html'">
+      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="User Account">
+    </div>
+  </div>
+    <div class="banner1">
+        <h1>
+            <center>Where would you like to go?</center>
+        </h1>
+        <br><br><br>
+        <div class="table-container">
+        <a href="budget-box.html"><div class="table-box">Budget Boxes</div></a>
+        <a href="challenges.html"><div class="table-box">Challenges</div></a>
+        <a href="goal-tracker.html"><div class="table-box">Goal Tracker</div></a>
+        <a href="piggy-pilot-ai.html"><div class="table-box">Piggy Pilot AI</div></a>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function toggleMenu() {
+      document.getElementById("sideMenu").classList.toggle("active");
+    }
+  </script>
